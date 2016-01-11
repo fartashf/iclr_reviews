@@ -4,5 +4,8 @@ This code could be used to retrieve all the comments on CMT for ICLR 2016 and
 compute statistics on scores given by the reviewers. I used Chrome's JavaScript
 console to run `get_reviews.js`.
 
+I used VIM to quickly get rid of blocks of HTML and text in the output of
+`get_reviews.js` before using `parse_reviews.py`.
+
 I challenged myself to write this code in the shortest time I could. So it
 could get cleaned up a bit. 
