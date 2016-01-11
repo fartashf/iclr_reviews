@@ -1,0 +1,8 @@
+USE THIS CODE AT YOUR OWN RISK!
+
+This code could be used to retrieve all the comments on CMT for ICLR 2016 and
+compute statistics on scores given by the reviewers. I used Chrome's JavaScript
+console to run `get_reviews.js`.
+
+I challenged myself to write this code in the shortest time I could. So it
+could get cleaned up a bit. 
