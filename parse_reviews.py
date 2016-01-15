@@ -6,7 +6,8 @@ rev_txt = 'Masked Reviewer ID:'
 qual_txt = 'Quantitative Evaluation'
 conf_txt = 'Confidence Score'
 papers = []
-f = open('reviews_all.txt', 'r')
+# f = open('reviews_all.txt', 'r')
+f = open('reviews_all_rebuttal.txt', 'r')
 lines = f.readlines()
 for (i, line) in enumerate(lines):
     if sub_id_txt in line:
@@ -17,11 +18,11 @@ for (i, line) in enumerate(lines):
         rev_id = line[len(rev_txt):].rstrip('\n')
         papers[-1] += [[('rev_id', rev_id)]]
 
-    if qual_txt in line:
+    if qual_txt == line[:-1]:
         s = lines[i+1]
         papers[-1][-1] += [('Q', int(s[:s.index(':')]))]
 
-    if conf_txt in line:
+    if conf_txt == line[:-1]:
         s = lines[i+1]
         papers[-1][-1] += [('C', int(s[:s.index(':')]))]
 
@@ -43,5 +44,5 @@ for i in range(len(papers)):
 print mx
 print pd.Series(q_means).describe()
 print np.sort(q_means)
-print len(q_means)-np.where(np.sort(q_means) >= 6.6)[0][0]
-print len(q_means)-np.where(np.sort(q_means) >= 6.7)[0][0]
+print 100.*(1-np.where(np.sort(q_means) >= (6+7+8)/3.)[0][0]/(1.*len(q_means)))
+print 100.*(1-np.where(np.sort(q_means) > (6+7+8)/3.)[0][0]/(1.*len(q_means)))
